@@ -1,0 +1,108 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Montserrat", sans-serif;
+}
+
+/* REGISTRO */
+/* BARRA DE NAVEGACION */
+header .nav-registro {
+    display: flex;
+    justify-content: center;
+    margin: 0;
+}
+
+header .nav-registro a img {
+    margin-top: 35px;
+    width: 5rem;
+}
+
+/* SECCION FORMULARIO */
+main {
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+}
+
+main .cont-formulario {
+    width: 30rem;
+    height: 20rem;
+    background-color: #eeeeee;
+    border-radius: 7px;
+}
+
+main .cont-formulario form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+main .cont-formulario form input{
+    width: 400px;
+    margin-top: 15px;
+    padding: 7px;
+    border: solid 1px #a7a7a7;
+    border-radius: 5px;
+}
+
+.btn-continuar{
+    background-color: #C5FF03;
+    border: solid 1px #a7a7a7;
+}
+
+main .cont-formulario h1 {
+    padding: 27px 0 12px 0;
+    text-align: center;
+    font-weight: 550;
+    font-size: 27px;
+}
+
+.inicio-sesion{
+    font-size: 13px;
+    margin-left: 40px;
+    color: #000;
+    text-decoration: none;
+}
+
+.inicio-sesion:hover{
+    text-decoration: underline;
+}
+
+.separador{
+    margin-top: 7px;
+}
+
+/* FOOTER */
+footer {
+    margin-top: 70px;
+}
+
+footer hr {
+    width: 83.6rem;
+    margin: 0 auto;
+}
+
+footer .cont-info-footer img {
+    width: 3.5rem;
+}
+
+.cont-info-footer {
+    padding: 60px 0 30px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.cont-info-footer h3 {
+    font-weight: 450;
+    margin-top: 20px;
+}
+
+.cont-info-footer p {
+    margin-top: 35px;
+    font-size: 14px;
+}
