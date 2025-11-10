@@ -8,7 +8,6 @@ body {
     font-family: "Montserrat", sans-serif;
 }
 
-/* REGISTRO */
 /* BARRA DE NAVEGACION */
 header .nav-inscripcion {
     display: flex;
@@ -23,43 +22,43 @@ header .nav-inscripcion a img {
     margin-right: 856px;
 }
 
-header .nav-inscripcion ul li{
+header .nav-inscripcion ul li {
     list-style: none;
     text-decoration: none;
 }
 
-header .nav-inscripcion ul a{
+header .nav-inscripcion ul a {
     text-decoration: none;
     color: black;
 }
 
-.mensaje h1{
+.mensaje h1 {
     font-weight: 550;
     margin: 35px 0 0 90px;
     font-size: 30px;
 }
 
-.cont-cursos h2{
+.cont-cuenta h2 {
     font-weight: 400;
     margin: 25px 0 0 90px;
 }
 
-.cont-cards{
-    display: flex;
-    flex-direction: column;
-}
-
-main a{
+main a {
     margin-left: 90px;
     color: black;
     text-decoration: none;
 }
 
-.margen{
+main .cont-cuenta a {
+    margin-top: 25px;
+    text-decoration: none;
+}
+
+.margen {
     margin-top: 25px;
 }
 
-main a:hover{
+main a:hover {
     text-decoration: underline;
 }
 
