@@ -1,0 +1,64 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Montserrat", sans-serif;
+}
+
+/* REGISTRO */
+/* BARRA DE NAVEGACION */
+header .nav-inscripcion {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 35px;
+}
+
+header .nav-inscripcion a img {
+    margin-top: 35px;
+    width: 5rem;
+    margin-right: 856px;
+}
+
+header .nav-inscripcion ul li{
+    list-style: none;
+    text-decoration: none;
+}
+
+header .nav-inscripcion ul a{
+    text-decoration: none;
+}
+
+/* FOOTER */
+footer {
+    margin-top: 70px;
+}
+
+footer hr {
+    width: 83.6rem;
+    margin: 0 auto;
+}
+
+footer .cont-info-footer img {
+    width: 3.5rem;
+}
+
+.cont-info-footer {
+    padding: 60px 0 30px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.cont-info-footer h3 {
+    font-weight: 450;
+    margin-top: 20px;
+}
+
+.cont-info-footer p {
+    margin-top: 35px;
+    font-size: 14px;
+}
