@@ -28,47 +28,68 @@ header .nav-inscripcion ul li{
 
 header .nav-inscripcion ul a{
     text-decoration: none;
-    color: black;
+    color: #000;
 }
 
-/* SECCION CURSOS */
-.mensaje h1{
-    font-weight: 550;
-    margin: 35px 0 0 90px;
-    font-size: 30px;
+/* SECCION FORMULARIO */
+main .cont-agregar-usuario {
+    width: 30rem;
+    height: 23rem;
+    background-color: #eeeeee;
+    border-radius: 7px;
+    margin: 35px 0 40px 123px;
 }
 
-h2{
+main .cont-agregar-usuario h2{
     font-weight: 400;
-    margin: 25px 0 0 90px;
+    padding: 20px 0 20px 43px;
 }
 
-.cont-cards{
+main .cont-agregar-usuario h3{
+    margin-left: 43px;
+    font-weight: 390;
+}
+
+main .cont-agregar-usuario form {
     display: flex;
     flex-direction: column;
-    margin: 25px 90px 0 90px;
+    align-items: center;
+}
+
+main .cont-agregar-usuario form input{
+    width: 400px;
+    margin-top: 15px;
+    padding: 7px;
+    border: solid 1px #a7a7a7;
+    border-radius: 5px;
+}
+
+.btn-crear{
+    background-color: #C5FF03;
+    border: solid 1px #a7a7a7;
+}
+
+.btn-buscar{
+    background-color: #C5FF03;
+    border: solid 1px #a7a7a7;
 }
 
 main a{
-    margin-left: 90px;
+    margin-left: 123px;
     color: black;
     text-decoration: none;
-}
-
-.margen{
-    margin-top: 25px;
 }
 
 main a:hover{
     text-decoration: underline;
 }
 
-.btn-gestionar-cursos{
-    background-color: #C5FF03;
-    padding: 7px;
-    border: solid 1px #a7a7a7;
-    margin: 0 90px 0 90px;
-    border-radius: 5px;
+.margen{
+    margin-top: 25px;
+}
+
+.cont-eliminar-cursos{
+    display: flex;
 }
 
 /* FOOTER */
