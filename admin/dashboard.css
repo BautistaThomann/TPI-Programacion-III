@@ -72,7 +72,7 @@ main a:hover{
     cursor: pointer;
 }
 
-.btn-gestionar-usuarios{
+.btn-gestionar-usuarios, .btn-gestionar-inscripciones{
     background-color: #C5FF03;
     padding: 7px;
     border: solid 1px #a7a7a7;

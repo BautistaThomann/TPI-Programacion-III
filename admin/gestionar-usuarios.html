@@ -32,7 +32,8 @@
             <form id="formAgregar">
                 <p><input placeholder="Nombre" type="text" name="nombreAgregar" id="nombreAgregar"></p>
                 <p><input placeholder="Email" type="email" name="emailAgregar" id="emailAgregar"></p>
-                <p><input placeholder="Contraseña" type="password" name="contraseniaAgregar" id="contraseniaAgregar"></p>
+                <p><input placeholder="Contraseña" type="password" name="contraseniaAgregar" id="contraseniaAgregar">
+                </p>
                 <p class="alineacion">Rol:</p>
                 <p class="rol-radio">
                     <label>
@@ -57,7 +58,9 @@
                 <p><input class="btn-buscar" type="submit" value="Eliminar usuario" id="buscarEliminarUsuario"></p>
             </form>
             <div id="cont-card-usuario-eliminar" style="margin-top: 20px;">
-                <!-- aparecen el usuarios q busco -->
+                <div class="card">
+                    <!-- aparecen el usuarios que buscamos -->
+                </div>
             </div>
         </section>
 
@@ -67,12 +70,15 @@
             <h2>Cambiar contraseña de usuario</h2>
             <h3>Ingrese el Email del usuario:</h3>
             <form id="formActualizar">
-                <p><input placeholder="Email" type="email" name="emailActualizarUsuario" id="emailActualizarUsuario"></p>
+                <p><input placeholder="Email" type="email" name="emailActualizarUsuario" id="emailActualizarUsuario">
+                </p>
                 <p><input class="btn-buscar" type="submit" value="Cambiar contraseña" id="buscarActualizarUsuario"></p>
             </form>
             <div id="cont-card-usuario-actualizar">
+                <div class="card" style="margin-top: 18px;">
                 <!-- aparece el usuario q busco, pero para cambiar su contraseña 
                 se hace un boton donde lo redirige a cambiar su contraseña  -->
+                </div>
             </div>
         </section>
 

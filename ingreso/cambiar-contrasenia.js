@@ -1,4 +1,5 @@
 import { obtenerUsuariosPorEmail, actualizarUsuario } from "../api.js";
+import { obtenerSesion, guardarSesion } from "../auth.js";
 
 const form = document.getElementById("formCambiarPass");
 
@@ -38,5 +39,17 @@ form.addEventListener("submit", async (e) => {
     await actualizarUsuario(usuario.id, datosActualizados);
 
     alert("Contraseña cambiada correctamente.");
-    window.location.href = "../usuario/vista-inicial.html";
+    
+    // actualizar la sesión actual si es el mismo usuario
+    const sesionActual = obtenerSesion();
+    if (sesionActual && sesionActual.email === usuario.email) {
+        guardarSesion({ ...sesionActual, contrasenia: nuevaPass });
+    }
+
+    // redirigir según rol real
+    if (usuario.rol === "admin") {
+        window.location.href = "../admin/vista-inicial.html";
+    } else {
+        window.location.href = "../usuario/vista-inicial.html";
+    }
 });
