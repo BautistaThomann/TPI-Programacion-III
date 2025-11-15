@@ -19,18 +19,19 @@
         <nav class="nav-inscripcion">
             <a href="../index.html"><img src="../img/logo-principal.png" alt="logo principal"></a>
             <ul>
-                <li><a href="../usuario/cursos.html">Dashboard</a></li>
+                <li><a href="dashboard.html">Dashboard</a></li>
             </ul>
         </nav>
     </header>
 
     <main>
         <section class="cont-inscripcion-curso">
-            <section class="curso">
-                <div>
-
+                <div class="card-curso-preview">
+                    <h3 id="preview-titulo"></h3>
+                    <p id="preview-descripcion"></p>
+                    <p id="preview-duracion"></p>
+                    <p id="preview-cupos"></p>
                 </div>
-            </section>
 
             <section class="cont-formulario">
                 <h1>Completar datos del curso:</h1>
@@ -64,6 +65,8 @@
             <p>© 2025 Dev Path. Todos los derechos reservados.</p>
         </div>
     </footer>
+
+    <script type="module" src="gestionar-cursos.js" defer></script>
 
 </body>
 

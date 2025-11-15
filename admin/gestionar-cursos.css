@@ -21,30 +21,50 @@ header .nav-inscripcion a img {
     margin-right: 856px;
 }
 
-header .nav-inscripcion ul li{
+header .nav-inscripcion ul li {
     list-style: none;
     text-decoration: none;
 }
 
-header .nav-inscripcion ul a{
+header .nav-inscripcion ul a {
     text-decoration: none;
     color: #000;
 }
 
 /* SECCION FORMULARIO */
-.cont-inscripcion-curso{
+.cont-inscripcion-curso {
     margin-top: 50px;
     display: flex;
     justify-content: center;
     gap: 5rem;
 }
 
-.curso{
-    background-color: #a7a7a7;
-    width: 500px;
+.card-curso-preview {
+    border: 1px solid #bebebe;
     width: 30rem;
     height: 20rem;
     border-radius: 7px;
+    padding: 30px;
+}
+
+.cont-inscripcion-curso .card-curso-preview h3 {
+    font-size: 25px;
+    font-weight: 450;
+    padding-bottom: 10px;
+}
+
+.cont-inscripcion-curso .card-curso-preview #preview-descripcion {
+    color: #212121;
+    padding-bottom: 10px;
+}
+
+.cont-inscripcion-curso .card-curso-preview #preview-duracion,
+.cont-inscripcion-curso .card-curso-preview #preview-cupos {
+    color: #212121;
+    display: inline-block;
+    border-radius: 5px;
+    background-color: #c4ff034e;
+    padding: 2px 8px;
 }
 
 main .cont-formulario {
@@ -60,7 +80,7 @@ main .cont-formulario form {
     align-items: center;
 }
 
-main .cont-formulario form input{
+main .cont-formulario form input {
     width: 400px;
     margin-top: 15px;
     padding: 7px;
@@ -68,7 +88,7 @@ main .cont-formulario form input{
     border-radius: 5px;
 }
 
-.btn-agregar{
+.btn-agregar {
     background-color: #C5FF03;
     border: solid 1px #a7a7a7;
 }
@@ -80,26 +100,26 @@ main .cont-formulario h1 {
     font-size: 20px;
 }
 
-main a{
-    margin-left: 240px;
+main a {
+    margin-left: 325px;
     color: black;
     text-decoration: none;
 }
 
-main a:hover{
+main a:hover {
     text-decoration: underline;
 }
 
-.margen{
+.margen {
     margin-top: 25px;
 }
 
-section h2{
+section h2 {
     font-weight: 400;
-    margin: 25px 0 0 240px;
+    margin: 25px 0 0 325px;
 }
 
-.cont-eliminar-cursos{
+.cont-eliminar-cursos {
     display: flex;
 }
 

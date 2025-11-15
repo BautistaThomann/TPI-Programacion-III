@@ -42,10 +42,11 @@ main .cont-gestion-usuarios {
 }
 
 .card {
+    border: 1px solid #bebebe;
     padding: 20px;
     width: 400px;
     height: 8.5rem;
-    background-color: #bebebe;
+    background-color: #ffffff;
     border-radius: 5px;
     margin: 20px 30px 40px 40px;
 }
@@ -57,7 +58,7 @@ main .cont-gestion-usuarios {
 
 .card .boton-card {
     padding: 6px 9px;
-    background-color: #ff00008f;
+    background-color: #ff00006b;
     border-radius: 5px;
     border: none;
     border: 1px solid black;
