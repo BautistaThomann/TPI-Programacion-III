@@ -55,6 +55,35 @@ main .cont-cuenta a {
     text-decoration: none;
 }
 
+.personales {
+    margin: 10px 0 0 10px;
+    text-align: left;
+}
+
+.color h2{
+    margin: 10px 0 0 10px;
+}
+
+.personales p {
+    font-weight: 550;
+}
+
+.fondo {
+    padding: 5px;
+    background-color: #C5FF03;
+    border-radius: 5px;
+}
+
+.color {
+    background-color: #eeeeee;
+    border-radius: 5px;
+    padding: 10px;
+    width: 400px;
+    height: 150px;
+    margin: 25px 0 0 90px;
+
+}
+
 .margen {
     margin-top: 25px;
 }

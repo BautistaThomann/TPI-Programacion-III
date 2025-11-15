@@ -19,20 +19,24 @@
         <nav class="nav-inscripcion">
             <a href="../index.html"><img src="../img/logo-principal.png" alt="logo principal"></a>
             <ul>
-                <li><a href="../usuario/cursos.html">Mis cursos</a></li>
+                <li><a href="cursos.html">Mis cursos</a></li>
             </ul>
         </nav>
     </header>
 
     <main>
         <section class="mensaje">
-            <h1>Msj bienvenida</h1>
+            <h1>Hola, <span class="fondo" id="msjBienvenida"></span></h1>
         </section>
 
         <section class="cont-cuenta">
-            <h2>Datos personales:</h2>
-            <div class="personales">
-
+            <div class="color">
+                <h2>Datos personales:</h2>
+                <div class="personales">
+                    <p>Nombre: <span style="font-weight: normal;" id="datoNombre"></span></p>
+                    <p>Email: <span style="font-weight: normal;" id="datoEmail"></span></p>
+                    <p>Rol: <span style="font-weight: normal;" id="datoRol"></span></p>
+                </div>
             </div>
             <p class="margen"></p>
             <a href="../ingreso/cambiar-contrasenia.html">Cambiar contraseña</a>
@@ -51,7 +55,7 @@
             <p>© 2025 Dev Path. Todos los derechos reservados.</p>
         </div>
     </footer>
-
+    <script type="module" src="cuenta-usuario.js"></script>
 </body>
 
 </html>

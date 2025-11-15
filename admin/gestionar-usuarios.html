@@ -25,43 +25,57 @@
     </header>
 
     <main>
-        <section class="cont-agregar-usuario">
+
+        <section class="cont-gestion-usuarios" id="seccion1">
             <h2>Agregar usuario</h2>
             <h3>Completá los datos del usuario:</h3>
-            <form action="">
-                <p><input placeholder="Nombre" type="text" name="nombre" id="nombre"></p>
-                <p><input placeholder="Email" type="email" name="email" id="email"></p>
-                <p><input placeholder="Contraseña" type="password" name="contrasenia" id="contrasenia"></p>
-                <p><input placeholder="Rol" type="text" name="rol" id="eol"></p>
+            <form id="formAgregar">
+                <p><input placeholder="Nombre" type="text" name="nombreAgregar" id="nombreAgregar"></p>
+                <p><input placeholder="Email" type="email" name="emailAgregar" id="emailAgregar"></p>
+                <p><input placeholder="Contraseña" type="password" name="contraseniaAgregar" id="contraseniaAgregar"></p>
+
+                <p class="alineacion">Rol:</p>
+                <p class="rol-radio">
+                    <label>
+                        <input type="radio" name="rol" value="admin"> Admin
+                    </label>
+                    <label>
+                        <input type="radio" name="rol" value="usuario"> Usuario
+                    </label>
+                </p>
+
                 <p><input class="btn-crear" type="submit" value="Crear" id="crear"></p>
             </form>
         </section>
+
         <hr style="width: 83.6rem; margin: 0 auto;">
-        <section class="cont-agregar-usuario" style="height: 14rem;">
+
+        <section class="cont-gestion-usuarios" style="height: 14rem;">
             <h2>Eliminar usuario</h2>
             <h3>Ingrese el Email del usuario:</h3>
-            <form action="">
-                <p><input placeholder="Email" type="email" name="email" id="email"></p>
-                <p><input class="btn-buscar" type="submit" value="Buscar" id="buscar"></p>
+            <form id="formEliminar">
+                <p><input placeholder="Email" type="email" name="emailEliminar" id="emailEliminar"></p>
+                <p><input class="btn-buscar" type="submit" value="Eliminar usuario" id="buscarEliminarUsuario"></p>
             </form>
-            <div class="cont-card-usuario">
+            <div id="cont-card-usuario-eliminar" style="margin-top: 20px;">
                 <!-- aparecen el usuarios q busco -->
             </div>
         </section>
 
-        <section class="cont-agregar-usuario" style="height: 14rem;">
+        <hr style="width: 83.6rem; margin: 0 auto;">
+
+        <section class="cont-gestion-usuarios" style="height: 14rem;">
             <h2>Cambiar contraseña de usuario</h2>
             <h3>Ingrese el Email del usuario:</h3>
-            <form action="">
-                <p><input placeholder="Email" type="email" name="email" id="email"></p>
-                <p><input class="btn-buscar" type="submit" value="Buscar" id="buscar"></p>
+            <form id="formActualizar">
+                <p><input placeholder="Email" type="email" name="emailActualizarUsuario" id="emailActualizarUsuario"></p>
+                <p><input class="btn-buscar" type="submit" value="Cambiar contraseña" id="buscarActualizarUsuario"></p>
             </form>
-            <div class="cont-card-usuario">
+            <div id="cont-card-usuario-actualizar">
                 <!-- aparece el usuario q busco, pero para cambiar su contraseña 
                 se hace un boton donde lo redirige a cambiar su contraseña  -->
             </div>
         </section>
-        
 
         <p class="margen"></p>
         <a href="../usuario/vista-inicial.html">Volver hacia atrás</a>
@@ -76,6 +90,8 @@
             <p>© 2025 Dev Path. Todos los derechos reservados.</p>
         </div>
     </footer>
+
+    <script type="module" src="gestionar-usuarios.js" defer></script>
 
 </body>
 

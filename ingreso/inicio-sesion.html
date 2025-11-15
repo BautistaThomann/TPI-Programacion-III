@@ -23,13 +23,13 @@
     <main>
         <section class="cont-formulario">
             <h1>Iniciar Sesión</h1>
-            <form action="">
+            <form method="POST" action="" id="formLogin">
                 <p><input placeholder="Email" type="email" name="email" id="email"></p>
                 <p><input placeholder="Contraseña" type="password" name="contrasenia" id="contrasenia"></p>
                 <p><input class="btn-continuar" type="submit" value="Continuar" id="continuar"></p>
             </form>
             <p class="separador"></p>
-            <a href="../ingreso/cambiar-contrasenia.html" class="inicio-sesion">Olvidé mi contraseña</a>
+            <a href="cambiar-contrasenia.html" class="inicio-sesion">Olvidé mi contraseña</a>
         </section>
     </main>
     <footer>
@@ -40,7 +40,9 @@
             <p>© 2025 Dev Path. Todos los derechos reservados.</p>
         </div>
     </footer>
+    <script type="module" src="../ingreso/inicio-sesion.js" defer></script>
 
 </body>
+
 
 </html>

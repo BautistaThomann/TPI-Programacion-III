@@ -69,6 +69,21 @@ main a:hover{
     border: solid 1px #a7a7a7;
     margin: 0 90px 0 90px;
     border-radius: 5px;
+    cursor: pointer;
+}
+
+.btn-gestionar-usuarios{
+    background-color: #C5FF03;
+    padding: 7px;
+    border: solid 1px #a7a7a7;
+    margin: 20px 90px 0 90px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+hr {
+    width: 83.6rem;
+    margin: 0 auto;
 }
 
 /* FOOTER */
