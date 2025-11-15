@@ -17,25 +17,26 @@
 <body>
     <header>
         <nav class="nav-inscripcion">
-            <a href="../index.html"><img src="../img/logo-principal.png" alt="logo principal"></a>
+            <a href="vista-inicial.html"><img src="../img/logo-principal.png" alt="logo principal"></a>
             <ul>
-                <li><a href="../usuario/vista-inicial.html">Inicio</a></li>
+                <li><a href="vista-inicial.html">Inicio</a></li>
             </ul>
         </nav>
     </header>
 
-    <main>
+    <main class="main-dashboard">
         <section class="mensaje">
-            <h1>Msj bienvenida</h1>
+            <h1 id="mensaje-h1"></h1>
+            <p id="mensaje-p"></p>
         </section>
 
         <section class="cont-cursos">
-            <h2>Lista de cursos:</h2>
+            <h2>Lista de cursos</h2>
             <div class="cont-cards">
             </div>
             <input class="btn-gestionar-cursos" type="submit" value="Gestionar cursos" id="gestionar-cursos">
         </section>
-
+        <hr>
         <section>
             <div class="cont-grafico">
                 <!-- grafico -->
@@ -43,24 +44,26 @@
         </section>
 
         <section>
-            <h2>Gestion de inscripciones:</h2>
+            <h2>Gestión de inscripciones</h2>
             <div class="cont-inscripciones">
                 <div class="inscripcion">
-                    
+
                 </div>
             </div>
-            <input class="btn-gestionar-inscripciones" type="submit" value="Gestionar inscripciones" id="gestionar-inscripciones">
+            <input class="btn-gestionar-inscripciones" type="submit" value="Gestionar inscripciones"
+                id="gestionar-inscripciones">
         </section>
 
         <hr>
+        <section>
+            <h2>Gestión de usuarios</h2>
+            <input class="btn-gestionar-usuarios" type="submit" value="Gestionar usuarios" id="gestionar-usuarios">
+        </section>
 
-        <input class="btn-gestionar-usuarios" type="submit" value="Gestionar usuarios" id="gestionar-usuarios">
-
-        
         <p class="margen"></p>
         <a href="../usuario/vista-inicial.html">Volver hacia atrás</a>
     </main>
-    
+
     <footer>
         <hr>
         <div class="cont-info-footer">

@@ -32,10 +32,31 @@ header .nav-inscripcion ul a{
 }
 
 /* SECCION CURSOS */
+.main-dashboard{
+    margin-left: 44px;
+}
+
+.main-dashboard hr{
+    margin: 35px 0px 0 90px;
+    width: 79rem;
+    text-align: left;
+}
+
 .mensaje h1{
     font-weight: 550;
     margin: 35px 0 0 90px;
     font-size: 30px;
+}
+
+.mensaje p{
+    margin: 5px 0 0 90px;
+}
+
+.mensaje span{
+    font-weight: 500;
+    background-color:#c4ff034e;
+    padding: 2px 8px;
+    border-radius: 5px;
 }
 
 h2{
