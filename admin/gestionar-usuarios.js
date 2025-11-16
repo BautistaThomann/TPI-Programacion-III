@@ -1,4 +1,19 @@
 import { crearUsuarios, obtenerUsuariosPorEmail, eliminarUsuario } from "../api.js";
+import { obtenerSesion } from "../auth.js";
+
+const usuario = obtenerSesion();
+
+// si no hay sesión, redirigimos al login
+if (!usuario) {
+    alert("Debes iniciar sesión para acceder a esta página.");
+    window.location.href = "../ingreso/inicio-sesion.html";
+}
+
+// controlamos si es admin
+if (usuario.rol !== "admin") {
+    alert("No tenés permisos para acceder a esta página.");
+    window.location.href = "index.html"; // sino, lo mandamos al index normal
+}
 
 const formAgregar = document.getElementById("formAgregar");
 const formEliminar = document.getElementById("formEliminar");
@@ -138,3 +153,5 @@ formActualizar.addEventListener("submit", async (e) => {
         alert("Error al buscar el usuario.");
     }
 });
+
+

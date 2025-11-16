@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" href="./img/logo-simple.png" type="image/x-icon">
+    <link rel="shortcut icon" href="../img/logo-simple.png" type="image/x-icon">
     <!-- fuente principal -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -32,26 +32,25 @@
 
         <section class="cont-cursos">
             <h2>Lista de cursos</h2>
-            <div class="cont-cards">
+            <div id="cont-cards">
             </div>
             <input class="btn-gestionar-cursos" type="submit" value="Gestionar cursos" id="gestionar-cursos">
         </section>
+
         <hr>
-        <section>
-            <div class="cont-grafico">
-                <!-- grafico -->
-            </div>
+
+        <section class="cont-grafico">
+            <h2>Estados de las inscripciones</h2>
+            <canvas id="graficoInscripciones"></canvas>
         </section>
 
         <section>
             <h2>Gestión de inscripciones</h2>
-            <div class="cont-inscripciones">
+            <div id="cont-inscripciones">
                 <div class="inscripcion">
 
                 </div>
             </div>
-            <input class="btn-gestionar-inscripciones" type="submit" value="Gestionar inscripciones"
-                id="gestionar-inscripciones">
         </section>
 
         <hr>
@@ -74,6 +73,7 @@
     </footer>
 
     <script type="module" src="dashboard.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 </body>
 

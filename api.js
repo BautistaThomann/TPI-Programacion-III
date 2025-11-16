@@ -1,9 +1,17 @@
-const urlBase1 = "https://690b50b06ad3beba00f46279.mockapi.io/api";
+const urlBase1 = "https://690b50b06ad3beba00f46279.mockapi.io/api/";
 const urlBase2 = "https://690b52436ad3beba00f4697e.mockapi.io/api/";
 
 const usuarios = `${urlBase1}/usuarios`;
 const cursos = `${urlBase1}/cursos`;
 const inscripciones = `${urlBase2}/inscripciones`;
+
+export async function urlCursos() {
+    return cursos;
+}
+
+export async function urlInscripciones() {
+    return inscripciones;
+}
 
 // usuarios
 export async function obtenerUsuarios() {
@@ -63,6 +71,23 @@ export async function crearCursos(data) {
     return res.json();
 }
 
+export async function eliminarCurso(id) {
+    const res = await fetch(`${cursos}/${id}`, {
+        method: "DELETE"
+    });
+    return res.json();
+}
+
+export async function actualizarCurso(id, data) {
+    await fetch(`${cursos}/${id}`, {
+        method: "PUT",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(data)
+    });
+}
+
 // inscripciones
 export async function crearInscripciones(data) {
     const res = await fetch(inscripciones, {
@@ -72,6 +97,26 @@ export async function crearInscripciones(data) {
     });
     return res.json();
 }
+
+export async function obtenerInscripciones() {
+    const res = await fetch(inscripciones);
+    return res.json();
+}
+
+export async function darDeBajaInscripcion(id) {
+    await fetch(`${inscripciones}/${id}`, {
+        method: "DELETE"
+    });
+}
+
+export async function actualizarInscripcion(id, datosActualizados) {
+    return fetch(`${inscripciones}/${id}`, {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(datosActualizados)
+    });
+}
+
 
 // creamos un admin inicial que luego pueda crear mas usuarios segun su rol (pueden ser usuarios normales o mas admins)
 export async function crearAdminInicial() {

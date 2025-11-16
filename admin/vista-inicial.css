@@ -53,9 +53,34 @@ section img{
     text-align: center;
 }
 
-.contenedor-cards{
+#contenedor-cards{
     display: flex;
     justify-content: center;
+}
+
+.cards{
+    width: 25%;
+    padding: 20px;
+    background-color: #EEEEEE;
+    margin: 18px;
+    border-radius: 5px;
+}
+
+.cards p span {
+    font-weight: 550;
+}
+
+.cards h3{
+    padding-bottom: 10px;
+    font-size: 20px;
+}
+
+.cards #ver-mas{
+    background-color:#C4FF02;
+    padding: 3px 5px;
+    border-radius: 5px;
+    text-decoration: none;
+    color: #000;
 }
 
 /* SECCION POR QUE ELEGIRNOS */
@@ -65,7 +90,7 @@ section img{
 }
 
 .cont-parrafo h2{
-    margin-top: 50px;
+    margin-top: 30px;
     font-weight: 500;
 }
 
