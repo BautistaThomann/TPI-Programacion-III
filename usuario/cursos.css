@@ -32,7 +32,7 @@ header .nav-inscripcion ul a{
 }
 
 /* SECCION CURSOS */
-.mensaje h1{
+#mensaje h1{
     font-weight: 550;
     margin: 35px 0 0 90px;
     font-size: 30px;
@@ -40,12 +40,49 @@ header .nav-inscripcion ul a{
 
 .cont-cursos h2{
     font-weight: 400;
-    margin: 25px 0 0 90px;
+    margin: 15px 0 20px 90px;
 }
 
-.cont-cards{
+#cont-cards{
     display: flex;
-    flex-direction: column;
+    flex-wrap: wrap;
+    background-color: #eeeeee;
+    width: 81rem;
+    margin: 0 0 0 90px;
+    gap: 30px;
+    padding: 30px;
+    border-radius: 5px;
+}
+
+#cont-cards div{
+    padding: 20px;
+    background-color: #fff;
+    border: 1px solid #bebebe;
+    border-radius: 5px;
+    width: 100%;
+}
+
+#cont-cards div h3{
+    padding-bottom: 7px;
+    font-size: 21px;
+}
+
+#cont-cards div p{
+    font-size: 14px;
+    color: #1c1c1c;
+    padding-bottom: 3px;
+}
+
+#cont-cards div p span{
+    font-weight: 550;
+}
+
+#cont-cards div button{
+    padding: 4px 6px;
+    background-color: #ff00006b;
+    border-radius: 5px;
+    margin-top: 5px;
+    border: 1px solid #000
 }
 
 main a{

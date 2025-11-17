@@ -127,6 +127,69 @@ main a:hover{
     cursor: pointer;
 }
 
+#cont-inscripciones{
+    display: flex;
+    justify-content: flex-start;
+    margin: 25px 0 0 90px;
+    flex-wrap: wrap;
+    gap: 30px;
+    width: 79rem;
+
+}
+
+.inscripcion{
+    background-color: #EEEEEE;
+    width: 25rem;
+    padding: 17px;
+    border-radius: 5px;
+}
+
+.inscripcion h3{
+    padding-bottom: 5px;
+}
+
+.inscripcion p{
+    padding-bottom: 2px;
+}
+
+.inscripcion p span{
+    font-weight: 550;
+}
+
+.inscripcion .acciones{
+    display: flex;
+    gap: 10px;
+    margin-top: 12px;
+}
+
+.inscripcion .acciones .btn-aprobar{
+    padding: 4px 7px;
+    width: 100%;
+    border-radius: 5px;
+    border: 1px solid #828282;
+    background-color: #96ff94;
+    transition: all 0.2s;
+}
+
+.inscripcion .acciones .btn-aprobar:hover{
+    background-color: #96ff94a0;
+    cursor: pointer;
+}
+
+.inscripcion .acciones .btn-rechazar{
+    padding: 4px 7px;
+    width: 100%;
+    border-radius: 5px;
+    border: 1px solid #828282;
+    background-color: #FF9494;
+    transition: all 0.2s;
+}
+
+.inscripcion .acciones .btn-rechazar:hover{
+    cursor: pointer;
+    background-color: #ff949497;
+}
+
 hr {
     width: 83.6rem;
     margin: 0 auto;

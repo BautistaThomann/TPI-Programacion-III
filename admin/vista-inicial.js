@@ -48,6 +48,7 @@ async function cargarCursos() {
                 <p><span>Duración:</span> ${curso.duracion} semanas</p>
                 <p><span>Cupos:</span> ${curso.cupos}</p>
                 <p><span>Id:</span> ${curso.id}</p>
+                <p></p>
                 <a href="dashboard.html" id="ver-mas">Ver más</a>
 
             `;
