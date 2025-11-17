@@ -1,8 +1,6 @@
 import { cerrarSesion, obtenerSesion } from "../auth.js";
 import { obtenerCursos, urlInscripciones } from "../api.js";
 
-import { obtenerSesion } from "../auth.js";
-
 const usuario = obtenerSesion();
 
 // si no hay sesión, redirigimos al login
