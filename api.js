@@ -1,5 +1,5 @@
-const urlBase1 = "https://690b50b06ad3beba00f46279.mockapi.io/api/";
-const urlBase2 = "https://690b52436ad3beba00f4697e.mockapi.io/api/";
+const urlBase1 = "https://690b50b06ad3beba00f46279.mockapi.io/api";
+const urlBase2 = "https://690b52436ad3beba00f4697e.mockapi.io/api";
 
 const usuarios = `${urlBase1}/usuarios`;
 const cursos = `${urlBase1}/cursos`;
@@ -30,8 +30,15 @@ export async function crearUsuarios(data) {
 
 export async function obtenerUsuariosPorEmail(email) {
     const res = await fetch(`${usuarios}?email=${email}`);
-    return res.json();
+
+    if (!res.ok) {
+        return [];
+    }
+
+    const data = await res.json();
+    return Array.isArray(data) ? data : [];
 }
+
 
 export async function actualizarUsuario(id, datosActualizados) {
     const res = await fetch(`${usuarios}/${id}`, {

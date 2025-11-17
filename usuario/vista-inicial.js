@@ -95,7 +95,11 @@ async function inscribirse(idCurso) {
     );
 
     if (yaInscripto) {
-        alert("Ya estás inscripto en este curso.");
+        await Swal.fire({
+            title: "Ya estás inscripto en este curso.",
+            icon: "question",
+            draggable: true
+        });
         return;
     }
 
@@ -112,6 +116,10 @@ async function inscribirse(idCurso) {
         body: JSON.stringify(nuevaInscripcion),
     });
 
-    alert("Has enviado tu solicitud de inscripción.");
+    await Swal.fire({
+        title: "Inscripción enviada.",
+        icon: "success",
+        draggable: true
+    });
 }
 

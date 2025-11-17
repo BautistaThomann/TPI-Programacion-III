@@ -15,7 +15,6 @@ if (usuario.rol !== "admin") {
     window.location.href = "index.html"; // sino, lo mandamos al index normal
 }
 
-
 const btnGestionarUsuarios = document.getElementById("gestionar-usuarios");
 const btnGestionarCursos = document.getElementById("gestionar-cursos");
 const contCards = document.getElementById("cont-cards");

@@ -1,9 +1,9 @@
 import { obtenerSesion } from "../auth.js";
-import { obtenerInscripciones, actualizarInscripcion, actualizarCurso, urlCursos, urlInscripciones} from "../api.js";
+import { obtenerInscripciones, actualizarInscripcion, actualizarCurso, urlCursos, urlInscripciones } from "../api.js";
 
 const usuario = obtenerSesion();
 const contenedor = document.getElementById("cont-cards");
-const cursos = await urlCursos(); 
+const cursos = await urlCursos();
 
 // si no hay sesión, redirigimos al login
 if (!usuario) {
@@ -54,8 +54,16 @@ async function crearCardInscripcion(inscripcion) {
 }
 
 async function cancelarInscripcion(idInscripcion, idCurso) {
-    const confirmar = confirm("¿Seguro que quieres cancelar tu inscripción?");
-    if (!confirmar) return;
+
+    const result = await Swal.fire({
+        title: "¿Seguro que quieres cancelar tu inscripción?",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonText: "Sí, cancelar",
+        cancelButtonText: "No",
+    });
+
+    if (!result.isConfirmed) return;
 
     try {
         const url = await urlInscripciones();
@@ -63,13 +71,18 @@ async function cancelarInscripcion(idInscripcion, idCurso) {
         // traemos la inscripcion completa
         const inscripcion = await fetch(`${url}/${idInscripcion}`).then(r => r.json());
 
-        // si está rechazada, no permitimos cancelar cancelar
+        // si fue rechazada, no permitir cancelar
         if (inscripcion.estado === "rechazada") {
-            alert(`No puedes cancelar esta inscripción porque su estado es: ${inscripcion.estado}.`);
+            Swal.fire("No puedes cancelar esta inscripción porque fue rechazada.", "", "error");
             return;
         }
 
-        // traer curso
+        // si ya estaba cancelada
+        if (inscripcion.estado === "cancelada") {
+            Swal.fire("Esta inscripción ya fue cancelada anteriormente.", "", "info");
+            return;
+        }
+
         const curso = await fetch(`${cursos}/${idCurso}`).then(r => r.json());
 
         // si estaba aprobada, devolver cupo
@@ -82,19 +95,18 @@ async function cancelarInscripcion(idInscripcion, idCurso) {
             await actualizarCurso(idCurso, cursoActualizado);
         }
 
-        // actualizar inscripción a cancelada (no la borramos)
+        // actualizar inscripción a cancelada
         await actualizarInscripcion(idInscripcion, { ...inscripcion, estado: "cancelada" });
 
-        alert("Inscripción cancelada correctamente.");
-        
+        await Swal.fire({
+            title: "Inscripción cancelada correctamente.",
+            icon: "success",
+        });
+
         location.reload();
 
     } catch (error) {
         console.error(error);
-        alert("Error al cancelar la inscripción.");
+        Swal.fire("Error al cancelar la inscripción.", "", "error");
     }
 }
-
-
-
-

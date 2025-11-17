@@ -10,29 +10,46 @@ form.addEventListener("submit", async (e) => {
     const contrasenia = form.contrasenia.value.trim();
 
     if (!email || !contrasenia) {
-        alert("Complete todos los campos.");
+        Swal.fire({
+            icon: "question",
+            title: "Se deben completar todos los campos.",
+        });
         return;
     }
 
     const usuarios = await obtenerUsuariosPorEmail(email);
 
     if (usuarios.length === 0) {
-        alert("No existe un usuario con ese email.");
+        Swal.fire({
+            icon: "error",
+            title: "No existe un usuario con ese email.",
+        });
         return;
     }
 
     const usuario = usuarios[0];
 
     if (usuario.contrasenia !== contrasenia) {
-        alert("Contraseña incorrecta.");
+        Swal.fire({
+            icon: "error",
+            title: "Contraseña incorrecta.",
+        });
         return;
     }
 
     guardarSesion(usuario);
 
     if (usuario.rol === "admin") {
+        await Swal.fire({
+            icon: "success",
+            title: "Logeo exitoso.",
+        });
         window.location.href = "../admin/vista-inicial.html";
     } else {
+        await Swal.fire({
+            icon: "success",
+            title: "Logeo exitoso.",
+        });
         window.location.href = "../usuario/vista-inicial.html";
     }
 });
