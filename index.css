@@ -1,65 +1,65 @@
-*{
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-body{
+body {
     font-family: "Montserrat", sans-serif;
 }
 
 /* BARRA DE NAVEGACION */
-nav{
+nav {
     display: flex;
     justify-content: space-around;
     align-items: center;
     margin-top: 35px;
 }
 
-nav ul{
+nav ul {
     list-style: none;
     display: flex;
 }
 
-nav ul li a{
+nav ul li a {
     color: #000;
     text-decoration: none;
     margin-right: 4px;
     font-size: 15px;
 }
 
-nav img{
+nav img {
     width: 6rem;
     margin-right: 860px;
 }
 
 /* SECCION BANNER INICIO */
-.cont-banner{
+.cont-banner {
     display: flex;
     justify-content: center;
     margin-top: 35px;
 }
 
-section img{
+section img {
     width: 83.6rem;
 }
 
 /* SECCION CURSOS */
-.cont-cursos{
+.cont-cursos {
     margin-top: 50px;
 }
 
-.cont-cursos h1{
+.cont-cursos h1 {
     text-align: center;
 }
 
-#contenedor-cards{
+#contenedor-cards {
     margin-top: 20px;
     display: flex;
     justify-content: center;
 }
 
-.cards{
+.cards {
     width: 25%;
     padding: 20px;
     background-color: #EEEEEE;
@@ -67,7 +67,7 @@ section img{
     border-radius: 5px;
 }
 
-.cards p{
+.cards p {
     padding-bottom: 7px;
 }
 
@@ -75,13 +75,13 @@ section img{
     font-weight: 550;
 }
 
-.cards h3{
+.cards h3 {
     padding-bottom: 10px;
     font-size: 22px;
 }
 
-.cards .btn-inscribirse{
-    background-color:#C4FF02;
+.cards .btn-inscribirse {
+    background-color: #C4FF02;
     padding: 5px 9px;
     border-radius: 5px;
     text-decoration: none;
@@ -93,7 +93,7 @@ section img{
     overflow: hidden;
 }
 
-.cards .btn-inscribirse::after{
+.cards .btn-inscribirse::after {
     content: '';
     position: absolute;
     left: 10%;
@@ -107,92 +107,93 @@ section img{
     will-change: transform;
 }
 
-.cards .btn-inscribirse:hover::after{
+.cards .btn-inscribirse:hover::after {
     transform: scaleX(1);
 }
 
-.cards .btn-inscribirse:hover{
+.cards .btn-inscribirse:hover {
     cursor: pointer;
     background-color: #c4ff0281;
 }
+
 /* SECCION POR QUE ELEGIRNOS */
-.cont-parrafo{
+.cont-parrafo {
     width: 83.6rem;
     margin: 0 auto;
 }
 
-.cont-parrafo h2{
+.cont-parrafo h2 {
     margin-top: 50px;
     font-weight: 500;
 }
 
 /* FOOTER */
-footer{
+footer {
     margin-top: 70px;
 }
 
-footer hr{
+footer hr {
     width: 83.6rem;
     margin: 0 auto;
 }
 
-footer .cont-info-footer img{
+footer .cont-info-footer img {
     width: 3.5rem;
 }
 
-.cont-info-footer{
+.cont-info-footer {
     padding: 60px 0 30px 0;
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-.cont-info-footer h3{
+.cont-info-footer h3 {
     font-weight: 450;
     margin-top: 20px;
 }
 
-.cont-info-footer p{
+.cont-info-footer p {
     margin-top: 35px;
     font-size: 14px;
 }
 
-@media (max-width: 900px){
-    nav img{
+@media (max-width: 900px) {
+    nav img {
         margin-right: 0px;
         margin-bottom: 15px;
     }
 
-    #contenedor-cards{
+    #contenedor-cards {
         flex-direction: column;
         align-items: center;
     }
 
-    .cards{
+    .cards {
         width: 80%;
     }
 
-    nav{
+    nav {
         flex-direction: column;
     }
 
-    nav ul{
+    nav ul {
         align-items: center;
     }
 
-    nav ul li{
+    nav ul li {
         margin-bottom: 10px;
     }
 
-    .cont-banner img{
+    .cont-banner img {
         width: 100%;
     }
 
-    .cont-parrafo{
+    .cont-parrafo {
         width: 90%;
     }
 
-    footer hr{
+    footer hr {
         width: 90%;
     }
 }

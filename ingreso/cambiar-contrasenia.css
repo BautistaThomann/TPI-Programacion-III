@@ -105,3 +105,36 @@ footer .cont-info-footer img {
     margin-top: 35px;
     font-size: 14px;
 }
+
+@media (max-width: 900px){
+    nav img{
+        margin-right: 0px;
+        margin-bottom: 15px;
+    }
+    
+    main .cont-formulario {
+        width: 90%;
+        height: auto;
+        padding: 15px;
+    }
+
+    main .cont-formulario form input{
+        width: 280px;
+    }
+
+    .cont-formulario .inicio-sesion {
+        display: flex;
+        justify-content: center;
+        margin-top: 10px;
+        margin-left: 0px;
+        text-decoration: none;
+    }
+
+    .cont-parrafo{
+        width: 90%;
+    }
+
+    footer hr{
+        width: 90%;
+    }
+}
