@@ -1,4 +1,4 @@
-import { crearUsuarios, obtenerUsuariosPorEmail, eliminarUsuario } from "../api.js";
+import { crearUsuarios, obtenerUsuariosPorEmail, eliminarUsuario, obtenerInscripciones, obtenerCursos, darDeBajaInscripcion } from "../api.js";
 import { obtenerSesion } from "../auth.js";
 
 const usuario = obtenerSesion();
@@ -89,16 +89,46 @@ formEliminar.addEventListener("submit", async (e) => {
         btnEliminar.className = "boton-card";
         btnEliminar.addEventListener("click", async () => {
             try {
+                const confirmar = confirm(`¿Seguro que querés eliminar al usuario ${usuario.nombre}?`);
+                if (!confirmar) return;
+
+                // traemos todas las inscripciones del usuario
+                const inscripciones = await obtenerInscripciones();
+                const inscripcionesUsuario = inscripciones.filter(i => i.id_usuario === usuario.id);
+
+                // traemos todos los cursos (para devolver cupos)
+                const cursos = await obtenerCursos();
+
+                for (const insc of inscripcionesUsuario) {
+
+                    // si su inscripcion estaba aprobada, devolvemos el cupo
+                    if (insc.estado === "aprobada") {
+                        const curso = cursos.find(c => c.id === insc.id_curso);
+                        if (curso) {
+                            curso.cupos++;                   // devolver cupo
+                            await actualizarCurso(curso.id, curso);
+                        }
+                    }
+
+                    // eliminamos la inscripción
+                    await darDeBajaInscripcion(insc.id);
+                }
+
+                // por ultimo eliminamos al usuario
                 await eliminarUsuario(usuario.id);
+
                 alert(`Usuario ${usuario.nombre} eliminado correctamente.`);
+
                 const cardEliminar = document.getElementById(`card-${usuario.id}`);
-                cardEliminar.innerHTML = ""; // vaciamos, no removemos completo para q quede el molde de la card always
+                cardEliminar.innerHTML = ""; // limpiamos la card
                 inputEmail.value = "";
+
             } catch (error) {
                 console.error(error);
                 alert("Error al eliminar el usuario.");
             }
         });
+
 
     } catch (error) {
         console.error(error);

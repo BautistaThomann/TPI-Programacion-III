@@ -12,7 +12,7 @@ if (!usuario) {
 // controlamos si es admin
 if (usuario.rol !== "admin") {
     alert("No tenés permisos para acceder a esta página.");
-    window.location.href = "index.html"; // sino, lo mandamos al index normal
+    window.location.href = "index.html";
 }
 
 const btnGestionarUsuarios = document.getElementById("gestionar-usuarios");
@@ -20,59 +20,52 @@ const btnGestionarCursos = document.getElementById("gestionar-cursos");
 const contCards = document.getElementById("cont-cards");
 const contenedorInscripciones = document.getElementById("cont-inscripciones");
 
-const admin = obtenerSesion();
-document.getElementById("mensaje-h1").textContent = `Hola, ${admin.nombre}`;
-document.getElementById("mensaje-p").innerHTML = `<span>Rol:</span> ${admin.rol} - <span>Email:</span> ${admin.email}`;
+document.getElementById("mensaje-h1").textContent = `Hola, ${usuario.nombre}`;
+document.getElementById("mensaje-p").innerHTML = `<span>Rol:</span> ${usuario.rol} - <span>Email:</span> ${usuario.email}`;
 
-btnGestionarUsuarios.addEventListener("click", () => {
-    window.location.href = "gestionar-usuarios.html";
-});
+// redirecciones
+btnGestionarUsuarios.addEventListener("click", () => window.location.href = "gestionar-usuarios.html");
+btnGestionarCursos.addEventListener("click", () => window.location.href = "gestionar-cursos.html");
 
-btnGestionarCursos.addEventListener("click", () => {
-    window.location.href = "gestionar-cursos.html";
-});
 
+// carga de cursos
 async function cargarCursos() {
     try {
         const cursos = await obtenerCursos();
 
-        // si no hay cursos
         if (cursos.length === 0) {
-            contCards.innerHTML = `
-                <p class="no-cursos">No hay cursos cargados todavía.</p>
-            `;
+            contCards.innerHTML = `<p class="no-cursos">No hay cursos cargados todavía.</p>`;
             return;
         }
 
-        // si hay cursos, generamos las cards
         contCards.innerHTML = "";
-
         cursos.forEach(curso => {
             const card = document.createElement("div");
             card.classList.add("card-curso");
-
             card.innerHTML = `
                 <h3>${curso.titulo}</h3>
                 <p><span>Descripción:</span> ${curso.descripcion}</p>
                 <p><span>Duración:</span> ${curso.duracion} semanas</p>
                 <p><span>Cupos:</span> ${curso.cupos}</p>
-                <p><span>Id:</span> ${curso.id}</p>
+                <p><span>ID:</span> ${curso.id}</p>
             `;
             contCards.appendChild(card);
         });
 
     } catch (error) {
         console.error("Error al cargar cursos:", error);
-        contCards.innerHTML = `
-            <p class="error-cursos">Error al obtener los cursos. Intente más tarde.</p>
-        `;
+        contCards.innerHTML = `<p class="error-cursos">Error al obtener los cursos.</p>`;
     }
 }
 cargarCursos();
 
 
-cargarInscripcionesGestion();
+document.getElementById("filtro-inscripciones").addEventListener("change", () => {
+    cargarInscripcionesGestion();
+});
 
+
+// carga de inscripciones
 async function cargarInscripcionesGestion() {
     contenedorInscripciones.innerHTML = "<p>Cargando inscripciones...</p>";
 
@@ -82,14 +75,22 @@ async function cargarInscripcionesGestion() {
         obtenerCursos()
     ]);
 
-    if (inscripciones.length === 0) {
-        contenedorInscripciones.innerHTML = "<p>No hay inscripciones.</p>";
+    let filtro = document.getElementById("filtro-inscripciones").value;
+
+    let inscripcionesFiltradas = inscripciones;
+
+    if (filtro !== "todas") {
+        inscripcionesFiltradas = inscripciones.filter(i => i.estado === filtro);
+    }
+
+    if (inscripcionesFiltradas.length === 0) {
+        contenedorInscripciones.innerHTML = "<p>No hay inscripciones con ese estado.</p>";
         return;
     }
 
-    contenedorInscripciones.innerHTML = ""; // limpio
+    contenedorInscripciones.innerHTML = "";
 
-    inscripciones.forEach(inscripcion => {
+    inscripcionesFiltradas.forEach(inscripcion => {
         const usuario = usuarios.find(u => u.id === inscripcion.id_usuario);
         const curso = cursos.find(c => c.id === inscripcion.id_curso);
 
@@ -98,6 +99,8 @@ async function cargarInscripcionesGestion() {
 }
 
 
+
+// creamos la card de inscripcion mediante dom
 function crearCardInscripcion(inscripcion, usuario, curso) {
     const card = document.createElement("div");
     card.classList.add("inscripcion");
@@ -121,13 +124,16 @@ function crearCardInscripcion(inscripcion, usuario, curso) {
     const btnAprobar = card.querySelector(".btn-aprobar");
     const btnRechazar = card.querySelector(".btn-rechazar");
 
+    // aprobamos la inscripcion, con validaciones
     btnAprobar.addEventListener("click", async () => {
-        // evitamos doble click
-        btnAprobar.disabled = true;
-        btnRechazar.disabled = true;
 
         try {
-            // traemos curso por id
+            if (inscripcion.estado === "aprobada") {
+                alert("Esta inscripción ya está aprobada.");
+                btnAprobar.disabled = true;
+                return;
+            }
+
             const cursos = await obtenerCursos();
             const cursoActual = cursos.find(c => c.id == curso.id);
 
@@ -137,85 +143,75 @@ function crearCardInscripcion(inscripcion, usuario, curso) {
             }
 
             if (cursoActual.cupos <= 0) {
-                alert("No quedan cupos disponibles para este curso.");
+                alert("No quedan cupos disponibles.");
                 return;
             }
 
-            // actualizar inscripción a aprobada
             await actualizarInscripcion(inscripcion.id, { estado: "aprobada" });
 
-            // restar 1 cupo y actualizar curso
+            // restar cupo si antes no estaba aprobada
             const nuevosCupos = cursoActual.cupos - 1;
             await actualizarCurso(cursoActual.id, { ...cursoActual, cupos: nuevosCupos });
 
-            alert("Inscripción aprobada y cupo de curso actualizado.");
-            cargarInscripcionesGestion();
-            crearOGraficoInscripciones();
-        } catch (error) {
-            console.error(error);
-            alert("Error al aprobar la inscripción.");
-        } finally {
-            btnAprobar.disabled = false;
-            btnRechazar.disabled = false;
+            alert("Inscripción aprobada.");
+
+            await cargarCursos();
+            await cargarInscripcionesGestion();
+            await crearOGraficoInscripciones();
+
+        } catch (err) {
+            console.error(err);
+            alert("Error al aprobar inscripción.");
         }
     });
 
-    // si rechazamos:
-    btnRechazar.addEventListener("click", async () => {
-        btnAprobar.disabled = true;
-        btnRechazar.disabled = true;
 
+    // la rechazamos, con validaciones tmb
+    btnRechazar.addEventListener("click", async () => {
         try {
-            // traeemos el curso
+            if (inscripcion.estado === "rechazada") {
+                alert("Esta inscripción ya está rechazada.");
+                btnRechazar.disabled = true;
+                return;
+            }
+
             const cursos = await obtenerCursos();
             const cursoActual = cursos.find(c => c.id == curso.id);
 
-            // si la inscripción ya estaba aprobada, devolvemos cupo
+            // devolver cupo si estaba aprobada
             if (inscripcion.estado === "aprobada" && cursoActual) {
                 const nuevosCupos = Number(cursoActual.cupos) + 1;
                 await actualizarCurso(cursoActual.id, { ...cursoActual, cupos: nuevosCupos });
             }
 
-            // la ponemos como rechazada
             await actualizarInscripcion(inscripcion.id, { estado: "rechazada" });
 
             alert("Inscripción rechazada.");
-            cargarInscripcionesGestion();
-            cargarCursos(); // recargamos para que se actualicen en la otra section del dashboard
-            crearOGraficoInscripciones();
+
+            await cargarCursos();
+            await cargarInscripcionesGestion();
+            await crearOGraficoInscripciones();
+
         } catch (error) {
             console.error(error);
-            alert("Error al rechazar la inscripción.");
-        } finally {
-            btnAprobar.disabled = false;
-            btnRechazar.disabled = false;
+            alert("Error al rechazar inscripción.");
         }
     });
 }
 
-// grafico de inscripciones
 
+// grafico
 async function obtenerConteoEstados() {
     const inscripciones = await obtenerInscripciones();
-
-    const estados = {
-        pendiente: 0,
-        aprobada: 0,
-        rechazada: 0,
-        cancelada: 0,
-    };
+    const estados = { pendiente: 0, aprobada: 0, rechazada: 0, cancelada: 0 };
 
     inscripciones.forEach(ins => {
-        if (estados[ins.estado] !== undefined) {
-            estados[ins.estado]++;
-        }
+        if (estados[ins.estado] !== undefined) estados[ins.estado]++;
     });
 
     return estados;
 }
 
-
-// variable global para guardar el chart
 let graficoInscripciones;
 
 async function crearOGraficoInscripciones() {
@@ -230,39 +226,41 @@ async function crearOGraficoInscripciones() {
     ];
 
     if (graficoInscripciones) {
-        // si ya existe, actualizamos los datos
         graficoInscripciones.data.datasets[0].data = data;
         graficoInscripciones.update();
-    } else {
-        // si no existe, lo creamos
-        graficoInscripciones = new Chart(ctx, {
-            type: 'bar',
-            data: {
-                labels: ["Pendiente", "Aprobada", "Rechazada", "Cancelada"],
-                datasets: [{
-                    label: "Cantidad de inscripciones",
-                    data: data,
-                    backgroundColor: [
-                        "rgba(255, 206, 86, 0.6)", 
-                        "rgba(75, 192, 192, 0.6)",     
-                        "rgba(255, 99, 132, 0.6)",     
-                        "rgba(201, 203, 207, 0.6)"   
-                    ],
-                    borderWidth: 1
-                }]
+        return;
+    }
+
+    graficoInscripciones = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: ["Pendiente", "Aprobada", "Rechazada", "Cancelada"],
+            datasets: [{
+                label: "Cantidad de inscripciones",
+                data: data,
+                backgroundColor: [
+                    "rgba(255, 206, 86, 0.6)",
+                    "rgba(75, 192, 192, 0.6)",
+                    "rgba(255, 99, 132, 0.6)",
+                    "rgba(201, 203, 207, 0.6)"
+                ],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            responsive: true,
+            scales: {
+                y: { beginAtZero: true },
+                x: { ticks: { font: { size: 12, weight: 'bold' } } }
             },
-            options: {
-                responsive: true,
-                scales: {
-                    y: { beginAtZero: true, ticks: { stepSize: 1 } },
-                    x: { ticks: { font: { size: 12, weight: 'bold' } } }
-                },
-                plugins: {
-                    legend: { labels: { font: { size: 12, weight: 'bold' } } }
+            plugins: {
+                legend: {
+                    labels: { font: { size: 12, weight: 'bold' } }
                 }
             }
-        });
-    }
+        }
+    });
 }
 
 crearOGraficoInscripciones();
+cargarInscripcionesGestion();

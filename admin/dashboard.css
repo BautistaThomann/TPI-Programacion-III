@@ -132,6 +132,13 @@ main a:hover {
     cursor: pointer;
 }
 
+#filtro-inscripciones{
+    border-radius: 5px;
+    margin-left: 90px;
+    margin-top: 8px;
+    padding: 3px;
+}
+
 #cont-inscripciones {
     display: flex;
     justify-content: flex-start;
@@ -311,6 +318,13 @@ footer .cont-info-footer img {
     
     #graficoInscripciones{
         margin: 0 auto;
+    }
+
+    #filtro-inscripciones{
+        margin-left: 45px;
+        margin-bottom: 15px;
+        margin-top: 15px;
+
     }
     
     h2{

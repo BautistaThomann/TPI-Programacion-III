@@ -39,17 +39,24 @@ form.addEventListener("submit", async (e) => {
     await actualizarUsuario(usuario.id, datosActualizados);
 
     alert("Contraseña cambiada correctamente.");
-    
+
     // actualizar la sesión actual si es el mismo usuario
     const sesionActual = obtenerSesion();
     if (sesionActual && sesionActual.email === usuario.email) {
         guardarSesion({ ...sesionActual, contrasenia: nuevaPass });
     }
 
-    // redirigir según rol real
-    if (usuario.rol === "admin") {
-        window.location.href = "../admin/vista-inicial.html";
+    // redirigimos segun quien esta logeado
+    const nuevaSesion = obtenerSesion(); // volver a cargar por si se actualizó
+
+    if (nuevaSesion) {
+        if (nuevaSesion.rol === "admin") {
+            window.location.href = "../admin/vista-inicial.html";
+        } else {
+            window.location.href = "..usuario/vista-inicial.html";
+        }
     } else {
-        window.location.href = "../usuario/vista-inicial.html";
+        window.location.href = "inicio-sesion.html";
     }
+
 });
