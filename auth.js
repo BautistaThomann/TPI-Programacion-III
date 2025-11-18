@@ -18,6 +18,7 @@ export function cerrarSesion() {
 export function requerirLogin() {
     const usuario = obtenerSesion();
     if (!usuario) {
+        alert("Debes iniciar sesión para acceder a esta página.");
         window.location.href = "../ingreso/inicio-sesion.html";
     }
 }
@@ -25,15 +26,17 @@ export function requerirLogin() {
 // permitir solo admin
 export function requerirAdmin() {
     const usuario = obtenerSesion();
-    if (!usuario || usuario.role !== "admin") {
-        window.location.href = "../ingreso/inicio-sesion.html";
+    if (!usuario || usuario.rol !== "admin") {
+        alert("No tenés permisos para acceder a esta página.");
+        window.location.href = "../index.html";
     }
 }
 
 // permitir solo user
 export function requerirUsuario() {
     const usuario = obtenerSesion();
-    if (!usuario || usuario.role !== "user") {
-        window.location.href = "../ingreso/inicio-sesion.html";
+    if (!usuario || usuario.rol !== "user") {
+        alert("No tenés permisos para acceder a esta página.");
+        window.location.href = "../index.html"; // sino, lo mandamos al index normal
     }
 }

@@ -1,18 +1,7 @@
-import { obtenerSesion } from "../auth.js";
+import { obtenerSesion, requerirUsuario } from "../auth.js";
+requerirUsuario();
 
 const usuario = obtenerSesion();
-
-// si no hay sesión, redirigimos al login
-if (!usuario) {
-    alert("Debes iniciar sesión para acceder a esta página.");
-    window.location.href = "../ingreso/inicio-sesion.html";
-}
-
-// controlamos si es usu
-if (usuario.rol !== "user") {
-    alert("No tenés permisos para acceder a esta página.");
-    window.location.href = "index.html"; // sino, lo mandamos al index normal
-}
 
 // le pasamos los datos de la cuenta actual
 document.getElementById("msjBienvenida").textContent = usuario.nombre;

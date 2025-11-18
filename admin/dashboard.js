@@ -1,19 +1,8 @@
-import { obtenerSesion } from "../auth.js";
+import { requerirAdmin, obtenerSesion } from "../auth.js";
 import { obtenerCursos, obtenerUsuarios, obtenerInscripciones, actualizarInscripcion, actualizarCurso } from "../api.js";
+requerirAdmin();
 
 const usuario = obtenerSesion();
-
-// si no hay sesión, redirigimos al login
-if (!usuario) {
-    alert("Debes iniciar sesión para acceder a esta página.");
-    window.location.href = "../ingreso/inicio-sesion.html";
-}
-
-// controlamos si es admin
-if (usuario.rol !== "admin") {
-    alert("No tenés permisos para acceder a esta página.");
-    window.location.href = "index.html";
-}
 
 const btnGestionarUsuarios = document.getElementById("gestionar-usuarios");
 const btnGestionarCursos = document.getElementById("gestionar-cursos");

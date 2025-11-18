@@ -1,19 +1,6 @@
-import { cerrarSesion, obtenerSesion } from "../auth.js";
+import { cerrarSesion, requerirAdmin } from "../auth.js";
 import { obtenerCursos } from "../api.js";
-
-const usuario = obtenerSesion();
-
-// si no hay sesión, redirigimos al login
-if (!usuario) {
-    alert("Debes iniciar sesión para acceder a esta página.");
-    window.location.href = "../ingreso/inicio-sesion.html";
-}
-
-// controlamos si es admin
-if (usuario.rol !== "admin") {
-    alert("No tenés permisos para acceder a esta página.");
-    window.location.href = "index.html"; // sino, lo mandamos al index normal
-}
+requerirAdmin();
 
 const linkCerrar = document.getElementById("cerrarSesion");
 const contCards = document.getElementById("contenedor-cards");

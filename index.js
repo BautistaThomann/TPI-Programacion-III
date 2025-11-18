@@ -1,6 +1,5 @@
-import { crearAdminInicial, obtenerCursos } from "./api.js";
+import { obtenerCursos } from "./api.js";
 
-crearAdminInicial();
 const contCards = document.getElementById("contenedor-cards");
 
 async function cargarCursos() {

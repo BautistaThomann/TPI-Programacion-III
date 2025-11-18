@@ -1,23 +1,13 @@
-import { obtenerSesion } from "../auth.js";
+import { obtenerSesion, requerirUsuario } from "../auth.js";
 import { obtenerInscripciones, actualizarInscripcion, actualizarCurso, urlCursos, urlInscripciones } from "../api.js";
+requerirUsuario();
 
-const usuario = obtenerSesion();
 const contenedor = document.getElementById("cont-cards");
 const cursos = await urlCursos();
 
-// si no hay sesión, redirigimos al login
-if (!usuario) {
-    alert("Debes iniciar sesión para acceder a esta página.");
-    window.location.href = "../ingreso/inicio-sesion.html";
-}
-
-// controlamos si es usu
-if (usuario.rol !== "user") {
-    alert("No tenés permisos para acceder a esta página.");
-    window.location.href = "index.html"; // sino, lo mandamos al index normal
-}
-
 document.getElementById("msjBienvenida").textContent = "Bienvenido/a";
+
+const usuario = obtenerSesion();
 
 async function cargarInscripciones() {
     const inscripciones = await obtenerInscripciones();

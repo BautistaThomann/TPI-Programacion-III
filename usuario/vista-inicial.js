@@ -1,19 +1,7 @@
-import { cerrarSesion, obtenerSesion } from "../auth.js";
+import { cerrarSesion, obtenerSesion, requerirUsuario } from "../auth.js";
 import { obtenerCursos, urlInscripciones } from "../api.js";
 
-const usuario = obtenerSesion();
-
-// si no hay sesión, redirigimos al login
-if (!usuario) {
-    alert("Debes iniciar sesión para acceder a esta página.");
-    window.location.href = "../ingreso/inicio-sesion.html";
-}
-
-// controlamos si es usu
-if (usuario.rol !== "user") {
-    alert("No tenés permisos para acceder a esta página.");
-    window.location.href = "index.html"; // sino, lo mandamos al index normal
-}
+requerirUsuario();
 
 const linkCerrar = document.getElementById("cerrarSesion");
 const btnMiCuenta = document.getElementById("miCuenta");
