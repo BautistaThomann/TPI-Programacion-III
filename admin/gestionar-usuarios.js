@@ -1,4 +1,4 @@
-import { crearUsuarios, obtenerUsuariosPorEmail, eliminarUsuario, obtenerInscripciones, obtenerCursos, darDeBajaInscripcion } from "../api.js";
+import { crearUsuarios, obtenerUsuariosPorEmail, eliminarUsuario, obtenerInscripciones, obtenerCursos, darDeBajaInscripcion, actualizarCurso } from "../api.js";
 import { obtenerSesion } from "../auth.js";
 
 const usuario = obtenerSesion();
